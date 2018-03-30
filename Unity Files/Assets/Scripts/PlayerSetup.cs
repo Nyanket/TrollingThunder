@@ -18,6 +18,11 @@ public class PlayerSetup : NetworkBehaviour {
     [SerializeField]
     GameObject playerGraphics;
 
+    [SerializeField]
+    private GameObject playerUIPrefab;
+
+    private GameObject playerUIInstance;
+
     Camera sceneCamera;
 
     void Start()
@@ -35,6 +40,8 @@ public class PlayerSetup : NetworkBehaviour {
                 sceneCamera.gameObject.SetActive(false);
             }
             SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDraw));
+            playerUIInstance = Instantiate(playerUIPrefab);
+            playerUIInstance.name = playerUIPrefab.name;
         }
 
         //RegisterPlayer();
@@ -81,6 +88,8 @@ public class PlayerSetup : NetworkBehaviour {
 
     void OnDisable()
     {
+        Destroy(playerUIInstance);
+
         if(sceneCamera != null)
         {
             sceneCamera.gameObject.SetActive(true);
