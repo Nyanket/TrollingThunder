@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(Player))]
-
+[RequireComponent(typeof(PlayerController))]
 public class PlayerSetup : NetworkBehaviour {
 
 	[SerializeField]
-    Behaviour[] componentstoDisable;
+    Behaviour[] componentsToDisable;
 
     [SerializeField]
     string RemoteLayerName = "RemotePlayer";
@@ -20,10 +20,8 @@ public class PlayerSetup : NetworkBehaviour {
 
     [SerializeField]
     private GameObject playerUIPrefab;
-
-    private GameObject playerUIInstance;
-
-    Camera sceneCamera;
+    //[HideInInspector]
+    public GameObject playerUIInstance;
 
     void Start()
     {
@@ -34,18 +32,20 @@ public class PlayerSetup : NetworkBehaviour {
         }
         else
         {
-            sceneCamera = Camera.main;
-            if(sceneCamera != null)
-            {
-                sceneCamera.gameObject.SetActive(false);
-            }
-            SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDraw));
-            playerUIInstance = Instantiate(playerUIPrefab);
+            SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDraw));            
+            playerUIInstance = (GameObject)Instantiate(playerUIPrefab);
             playerUIInstance.name = playerUIPrefab.name;
+            Debug.Log("Suces: " + playerUIInstance.name+ GetComponent<NetworkIdentity>().netId.ToString());
+            PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
+            if (ui == null)
+                Debug.Log("No PlayerUI component on PlayerUI prefab.");
+            ui.SetController(GetComponent<PlayerController>());
+            GetComponent<Player>().SetupPlayer();
+
         }
 
         //RegisterPlayer();
-        GetComponent<Player>().Setup();
+        
     }
 
     void SetLayerRecursively (GameObject obj, int newLayer)
@@ -80,9 +80,9 @@ public class PlayerSetup : NetworkBehaviour {
 
     void DisableComponent()
     {
-        for (int i = 0; i < componentstoDisable.Length; i++)
+        for (int i = 0; i < componentsToDisable.Length; i++)
         {
-            componentstoDisable[i].enabled = false;
+            componentsToDisable[i].enabled = false;
         }
     }
 
@@ -90,10 +90,8 @@ public class PlayerSetup : NetworkBehaviour {
     {
         Destroy(playerUIInstance);
 
-        if(sceneCamera != null)
-        {
-            sceneCamera.gameObject.SetActive(true);
-        }
+        if(isLocalPlayer)
+            GameManager.instance.SetSceneCameraActive(true);
 
         GameManager.UnRegisterPlayer(transform.name);
     }
