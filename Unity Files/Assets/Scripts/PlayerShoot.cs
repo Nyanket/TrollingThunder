@@ -33,7 +33,11 @@ public class PlayerShoot : NetworkBehaviour {
 
     void Update()
     {
+
         currWeapon = weaponManager.GetCurrWeapon();
+
+        if (PauseMenu.isOn)
+            return;
 
         if (currWeapon.fireRate <= 0f)
         {

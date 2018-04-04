@@ -35,7 +35,6 @@ public class PlayerSetup : NetworkBehaviour {
             SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDraw));            
             playerUIInstance = (GameObject)Instantiate(playerUIPrefab);
             playerUIInstance.name = playerUIPrefab.name;
-            Debug.Log("Suces: " + playerUIInstance.name+ GetComponent<NetworkIdentity>().netId.ToString());
             PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
             if (ui == null)
                 Debug.Log("No PlayerUI component on PlayerUI prefab.");
