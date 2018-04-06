@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour {
 
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] GameObject SceneCamera;
     public MatchSettings matchSettings;
+
+    public delegate void OnPlayerKilledCallBack(string player, string source);
+    public OnPlayerKilledCallBack onPlayerKilledCallBack;
 
     private void Awake()
     {
@@ -24,6 +28,8 @@ public class GameManager : MonoBehaviour {
             return;
         SceneCamera.SetActive(_isActive);
     }
+
+
 
     #region Player_Tracking
 
@@ -46,6 +52,12 @@ public class GameManager : MonoBehaviour {
     public static Player GetPlayer(string _playerID)
     {
         return players[_playerID];
+    }
+
+
+    public static Player[] GetAllPlayers()
+    {
+        return players.Values.ToArray();
     }
 
     /* private void OnGUI()

@@ -11,6 +11,7 @@ public class PlayerMotor : MonoBehaviour {
     private Vector3 velocity = Vector3.zero;
     private Vector3 rotation = Vector3.zero;
     private float camRotateX = 0f;
+    [SerializeField]
     private float currCamRotateX = 0f;
     private Vector3 thrusterForce = Vector3.zero;
 
@@ -75,7 +76,7 @@ public class PlayerMotor : MonoBehaviour {
             for (int i = 0; i < GetObject.Length; i++)
             {
 
-                GetObject[i].transform.localEulerAngles = new Vector3(-currCamRotateX - 90, 0, 0);
+                GetObject[i].transform.localEulerAngles = new Vector3(-cam.transform.localEulerAngles.x, 0, 0);
 
             }
 

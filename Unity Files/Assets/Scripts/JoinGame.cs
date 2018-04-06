@@ -28,8 +28,13 @@ public class JoinGame : MonoBehaviour {
     public void RefreshRoomList()
     {
         ClearRoomList();
-        networkManager.matchMaker.ListMatches(0, 20, "", true, 0, 0, OnMatchList);
 
+        if(networkManager.matchMaker == null)
+        {
+            networkManager.StartMatchMaker();
+        }
+
+        networkManager.matchMaker.ListMatches(0, 20, "", true, 0, 0, OnMatchList);
         status.text = "Loading...";
     }
 
@@ -79,7 +84,7 @@ public class JoinGame : MonoBehaviour {
     public void JoinRoom(MatchInfoSnapshot _match)
     {
         networkManager.matchMaker.JoinMatch(_match.networkId, "", "", "", 0, 0, networkManager.OnMatchJoined);
-        //StartCoroutine(WaitForJoin());
+        StartCoroutine(WaitForJoin());
     }
 
     IEnumerator WaitForJoin()

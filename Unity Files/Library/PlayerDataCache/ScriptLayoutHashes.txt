@@ -1,5 +1,6 @@
 WindowsStandalone
 SceneListBegin?
+Assets/Scenes/LoginMenu.unity
 Assets/Scenes/Lobby.unity
 Assets/Scenes/Scene01.unity
 SceneListEnd?
@@ -16,7 +17,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-2db7c94fa344c21d51edda054ba79a74 Assembly-CSharp.dll:.Player
+159ad14efd80b004b2410b2d1969a8a2 Assembly-CSharp.dll:.Player
 7ba1e84ad3d2d8813486668e75f842ce Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ParticleSystemMultiplier
 430c1729d7a445aa5df470ced463fca9 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExplosionPhysicsForce
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:.EventSystemChecker
@@ -54,7 +55,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 8e9f5b922979e9356a11d2ee2b32ee60 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.TiltInput
-a22eac811172241761fed66c03b9e104 Assembly-CSharp.dll:.PlayerUI
+ef268d179f03b0abd39521d2bd8d20f5 Assembly-CSharp.dll:.PlayerUI
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -138,13 +139,14 @@ a90e94673f50d2237c1b971c138660c6 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 57fde8e76fc7bce23deb0e799d336be7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SmoothFollow
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
-64aa47a4396d5849519c0533b069b4b9 Assembly-CSharp.dll:.WeaponManager
+e292f9c804c6053298d456bfcff1e3a2 Assembly-CSharp.dll:.WeaponManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.MobileControlRig
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ObjectResetter
 e97ff9540a49b92b779792c195839d33 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.AfterburnerPhysicsForce
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.FireLight
-59badcd48320e8a2e4e03605c1b20c4c Assembly-CSharp.dll:.PlayerMotor
+0cf271aa8ec6765126c8f7f83276d9a0 Assembly-CSharp.dll:.PlayerMotor
 869e5abc2271c3b618904edff22e38ef Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExplosionFireAndDebris
+b26b3a55de2a8cbeee573d45c8848f09 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientOcclusion
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -190,3 +192,16 @@ d742aff7dae4846ea47fa40b5b944651 Assembly-CSharp.dll:.PlayerSetup
 78d1af96a2c54e318d4e22ced5f6d739 Assembly-CSharp.dll:.PlayerController
 f0da81376c3ac18bc573050067e3a113 Assembly-CSharp.dll:.GameManager
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+89288ac281db0ae7d58120142831f5f3 Assembly-CSharp.dll:.DCF_DemoScene_ManagerScript_CSharp
+951772f04286d6df51dbb1f5bbf4984d Assembly-CSharp.dll:.LoginMenu
+b2a87f8a9694d632eae6fb2e8224d9ee Assembly-CSharp.dll:.UserAccountManager
+5c60235dca46c0d1d1ce01f2af356452 Assembly-CSharp.dll:.UserAccount_Lobby
+8a6b1935afb74a080c7a80e175c3b7f2 Assembly-CSharp.dll:.PlayerStats
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DataTranslator
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayerScore
+6602d0e41b41c7fa1c751201dbf40499 Assembly-CSharp.dll:.Scoreboard
+c04fb9e613ebb55d80a859e606071290 Assembly-CSharp.dll:.PlayerScoreboardItem
+e2580dc21bf17dc42663b50853ed422f Assembly-CSharp.dll:.KillFeed
+650c1e412dac0323d37ae3023565f947 Assembly-CSharp.dll:.KillFeedItem
+281e5422d664f8dacc5d3126ed43de75 Assembly-CSharp.dll:.PlayerNamePlates
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CameraFacingBillboard

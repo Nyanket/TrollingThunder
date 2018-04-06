@@ -280,6 +280,12 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/denny/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="DatabaseControlEditor">
+      <HintPath>Assets/Database Control Free/Scripts/Editor/DatabaseControlEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DatabaseControl">
+      <HintPath>Assets/Database Control Free/Scripts/DatabaseControl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Game Engin Progamming.Plugins.csproj">
@@ -292,6 +298,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Arena\Example\ImageEffects\Shaders\SSAOShader.shader" />
+    <None Include="Assets\Database Control Free\Demos\UnityScript\Readme.txt" />
+    <None Include="Assets\Database Control Free\Resources\DCF_RuntimeData.txt" />
+    <None Include="Assets\Editor Default Resources\Database Control Free\DCF_EditorData.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />

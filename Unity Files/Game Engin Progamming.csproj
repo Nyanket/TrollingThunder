@@ -280,6 +280,12 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/denny/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="DatabaseControlEditor">
+      <HintPath>Assets/Database Control Free/Scripts/Editor/DatabaseControlEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DatabaseControl">
+      <HintPath>Assets/Database Control Free/Scripts/DatabaseControl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Game Engin Progamming.Plugins.csproj">
@@ -289,25 +295,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Arena\Example\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
+    <Compile Include="Assets\Database Control Free\Demos\C#\Scripts\DCF_DemoScene_ManagerScript_CSharp.cs" />
+    <Compile Include="Assets\KillFeed.cs" />
+    <Compile Include="Assets\KillFeedItem.cs" />
+    <Compile Include="Assets\PlayerNamePlates.cs" />
+    <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
+    <Compile Include="Assets\Scripts\DataTranslator.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HostGame.cs" />
     <Compile Include="Assets\Scripts\JoinGame.cs" />
+    <Compile Include="Assets\Scripts\LoginMenu.cs" />
     <Compile Include="Assets\Scripts\MatchSettings.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerMotor.cs" />
+    <Compile Include="Assets\Scripts\PlayerScore.cs" />
+    <Compile Include="Assets\Scripts\PlayerScoreboardItem.cs" />
     <Compile Include="Assets\Scripts\PlayerSetup.cs" />
     <Compile Include="Assets\Scripts\PlayerShoot.cs" />
+    <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\RoomListItem.cs" />
+    <Compile Include="Assets\Scripts\Scoreboard.cs" />
+    <Compile Include="Assets\Scripts\UserAccount_Lobby.cs" />
+    <Compile Include="Assets\Scripts\UserAccountManager.cs" />
     <Compile Include="Assets\Scripts\Util.cs" />
     <Compile Include="Assets\Scripts\WeaponGraphics.cs" />
     <Compile Include="Assets\Scripts\WeaponManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Arena\Example\ImageEffects\Shaders\SSAOShader.shader" />
+    <None Include="Assets\Database Control Free\Demos\UnityScript\Readme.txt" />
+    <None Include="Assets\Database Control Free\Resources\DCF_RuntimeData.txt" />
+    <None Include="Assets\Editor Default Resources\Database Control Free\DCF_EditorData.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />

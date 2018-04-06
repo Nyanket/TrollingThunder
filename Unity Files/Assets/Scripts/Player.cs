@@ -18,6 +18,12 @@ public class Player : NetworkBehaviour{
     [SyncVar]
     private int currHealth;
 
+    [SyncVar]
+    public string username = "Loading...";
+
+    public int kills;
+    public int deaths;
+
     [SerializeField] private Behaviour[] disableOnDeath;
     private bool[] wasEnabled;
     [SerializeField] private GameObject[] disableGameObjectsOnDeath;
@@ -27,14 +33,27 @@ public class Player : NetworkBehaviour{
 
     private bool firstSetup = true;
 
-    private void Update()
+    private WeaponManager weaponManager;
+    private PlayerWeapon currWeapon;
+
+    /* private void Update()
+     {
+         if (!isLocalPlayer)
+             return;
+         if (Input.GetKeyDown(KeyCode.K))
+         {
+             RpcTakeDamage(9999);
+         }
+     }*/
+
+    private void Start()
     {
-        if (!isLocalPlayer)
-            return;
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            RpcTakeDamage(9999);
-        }
+        weaponManager = GetComponent<WeaponManager>();
+    }
+
+    public float getHealthPerc()
+    {
+        return (float)currHealth / maxHealth;
     }
 
     public void SetupPlayer()
@@ -72,7 +91,7 @@ public class Player : NetworkBehaviour{
 
 
     [ClientRpc]
-    public void RpcTakeDamage (int _amount)
+    public void RpcTakeDamage (int _amount, string _sourceID)
     {
         if (isDead)
             return;
@@ -81,13 +100,22 @@ public class Player : NetworkBehaviour{
         
         if(currHealth <= 0)
         {
-            Die();
+            Die(_sourceID);
         }
     }
 
-    private void Die()
+    private void Die(string _sourceID)
     {
         isDead = true;
+
+        Player sourcePlayer = GameManager.GetPlayer(_sourceID);
+        if(sourcePlayer != null)
+        {
+            sourcePlayer.kills++;
+            GameManager.instance.onPlayerKilledCallBack.Invoke(username, sourcePlayer.username);
+        }       
+
+        deaths++;
 
         for (int i = 0; i < disableOnDeath.Length; i++)
         {
@@ -114,6 +142,8 @@ public class Player : NetworkBehaviour{
         }
 
         StartCoroutine(Respawn());
+        currWeapon = weaponManager.GetCurrWeapon();
+        currWeapon.currBullets = currWeapon.maxBullets;
     }
 
     private IEnumerator Respawn()

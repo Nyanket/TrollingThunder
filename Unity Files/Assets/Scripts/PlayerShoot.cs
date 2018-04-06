@@ -39,6 +39,13 @@ public class PlayerShoot : NetworkBehaviour {
         if (PauseMenu.isOn)
             return;
 
+        if(currWeapon.currBullets < currWeapon.maxBullets)
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                weaponManager.Reload();
+                return;
+            }
+
         if (currWeapon.fireRate <= 0f)
         {
             if (Input.GetButtonDown("Fire1"))
@@ -86,10 +93,18 @@ public class PlayerShoot : NetworkBehaviour {
     [Client]
     void Shoot()
     {
-        if (!isLocalPlayer)
+        if (!isLocalPlayer || weaponManager.isReloading)
         {
             return;
         }
+
+        if(currWeapon.currBullets<= 0)
+        {
+            weaponManager.Reload();
+            return;
+        }
+
+        currWeapon.currBullets--;
 
         CmdOnShoot();
 
@@ -98,19 +113,21 @@ public class PlayerShoot : NetworkBehaviour {
         {
             if (_hit.collider.tag == PLAYER_TAG)
             {
-                CmdPlayerShot(_hit.collider.name, currWeapon.damage);
+                CmdPlayerShot(_hit.collider.name, currWeapon.damage, transform.name);
             }
             CmdOnHit(_hit.point, _hit.normal);
         }
+        if (currWeapon.currBullets <= 0)
+            weaponManager.Reload();
     }
 
     [Command]
-    void CmdPlayerShot (string _playerID, int _damage)
+    void CmdPlayerShot (string _playerID, int _damage, string _sourceID)
     {
         Debug.Log(_playerID + " has been shot");
 
         Player _player = GameManager.GetPlayer(_playerID);
-        _player.RpcTakeDamage(_damage);
+        _player.RpcTakeDamage(_damage, _sourceID);
     }
 
 }

@@ -38,13 +38,31 @@ public class PlayerSetup : NetworkBehaviour {
             PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
             if (ui == null)
                 Debug.Log("No PlayerUI component on PlayerUI prefab.");
-            ui.SetController(GetComponent<PlayerController>());
+            ui.SetPlayer(GetComponent<Player>());
             GetComponent<Player>().SetupPlayer();
+
+            string _username = "Loading..";
+            if (UserAccountManager.isLoggedIn)
+                _username = UserAccountManager.playerUsername;
+            else
+                _username = transform.name;
+
+            CmdSetUsername(transform.name, _username);
 
         }
 
         //RegisterPlayer();
         
+    }
+
+    [Command]
+    void CmdSetUsername(string playerID, string username)
+    {
+        Player player = GameManager.GetPlayer(playerID);
+        if(player != null)
+        {
+            player.username = username;
+        }
     }
 
     void SetLayerRecursively (GameObject obj, int newLayer)

@@ -45,7 +45,21 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
         if (PauseMenu.isOn)
+        {
+            if (Cursor.lockState != CursorLockMode.None)
+                Cursor.lockState = CursorLockMode.None;
+
+            motor.Move(Vector3.zero);
+            motor.Rotation(Vector3.zero);
+            motor.camRotation(0f);
+
             return;
+        }
+        
+        if(Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
         RaycastHit _hit;
         if(Physics.Raycast(transform.position, Vector3.down, out _hit, 100f,environtmentMask))
@@ -71,9 +85,6 @@ public class PlayerController : MonoBehaviour {
         Vector3 rotation = new Vector3(0, yRot, 0) * sensitivity;
         float camRotationX = xRot * sensitivity;
 
-        motor.Rotation(rotation);
-        motor.camRotation(camRotationX);
-
         Vector3 _thrustherForce = Vector3.zero;
 
         if (Input.GetButton("Jump") && thrusterFuelAmount > 0f)
@@ -93,8 +104,9 @@ public class PlayerController : MonoBehaviour {
         }
 
         thrusterFuelAmount = Mathf.Clamp(thrusterFuelAmount, 0f, 1f);
-        
 
+        motor.Rotation(rotation);
+        motor.camRotation(camRotationX);
         motor.ApplyThruster(_thrustherForce);
 
 	}
