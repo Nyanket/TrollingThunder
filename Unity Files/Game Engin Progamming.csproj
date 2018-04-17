@@ -259,6 +259,12 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="DatabaseControl">
+      <HintPath>Assets/Database Control Free/Scripts/DatabaseControl.dll</HintPath>
+    </Reference>
+    <Reference Include="DatabaseControlEditor">
+      <HintPath>Assets/Database Control Free/Scripts/Editor/DatabaseControlEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/Users/denny/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
@@ -280,12 +286,6 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/denny/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="DatabaseControlEditor">
-      <HintPath>Assets/Database Control Free/Scripts/Editor/DatabaseControlEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DatabaseControl">
-      <HintPath>Assets/Database Control Free/Scripts/DatabaseControl.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Game Engin Progamming.Plugins.csproj">
@@ -296,20 +296,21 @@
   <ItemGroup>
     <Compile Include="Assets\Arena\Example\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
     <Compile Include="Assets\Database Control Free\Demos\C#\Scripts\DCF_DemoScene_ManagerScript_CSharp.cs" />
-    <Compile Include="Assets\KillFeed.cs" />
-    <Compile Include="Assets\KillFeedItem.cs" />
-    <Compile Include="Assets\PlayerNamePlates.cs" />
     <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
     <Compile Include="Assets\Scripts\DataTranslator.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\HealthPack.cs" />
     <Compile Include="Assets\Scripts\HostGame.cs" />
     <Compile Include="Assets\Scripts\JoinGame.cs" />
+    <Compile Include="Assets\Scripts\KillFeed.cs" />
+    <Compile Include="Assets\Scripts\KillFeedItem.cs" />
     <Compile Include="Assets\Scripts\LoginMenu.cs" />
     <Compile Include="Assets\Scripts\MatchSettings.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerMotor.cs" />
+    <Compile Include="Assets\Scripts\PlayerNamePlates.cs" />
     <Compile Include="Assets\Scripts\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\PlayerScoreboardItem.cs" />
     <Compile Include="Assets\Scripts\PlayerSetup.cs" />
@@ -324,6 +325,7 @@
     <Compile Include="Assets\Scripts\Util.cs" />
     <Compile Include="Assets\Scripts\WeaponGraphics.cs" />
     <Compile Include="Assets\Scripts\WeaponManager.cs" />
+    <Compile Include="Assets\WeaponSwitching.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Arena\Example\ImageEffects\Shaders\SSAOShader.shader" />

@@ -17,7 +17,7 @@ public class PlayerMotor : MonoBehaviour {
 
     [SerializeField] private float cameraRotationLimit = 80f;
 
-    [SerializeField] private GameObject[] GetObject;
+    [SerializeField] private Transform head;
 
     private Rigidbody rb;
 
@@ -73,12 +73,7 @@ public class PlayerMotor : MonoBehaviour {
             currCamRotateX = Mathf.Clamp(currCamRotateX, -cameraRotationLimit, cameraRotationLimit);
 
             cam.transform.localEulerAngles = new Vector3(currCamRotateX, 0, 0);
-            for (int i = 0; i < GetObject.Length; i++)
-            {
-
-                GetObject[i].transform.localEulerAngles = new Vector3(-cam.transform.localEulerAngles.x, 0, 0);
-
-            }
+            head.localEulerAngles = new Vector3(-cam.transform.localEulerAngles.x, 0, 0);
 
         }
     }

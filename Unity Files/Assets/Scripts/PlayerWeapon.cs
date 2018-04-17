@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class PlayerWeapon
+[CreateAssetMenu(fileName = "new Weapon", menuName = "Weapon")]
+public class PlayerWeapon : ScriptableObject
 {
+    
 
-    public string name = "Glock";
+    public string weaponName = "Glock";
 
     public int damage = 10;
     public float range = 100f;
@@ -20,6 +21,10 @@ public class PlayerWeapon
     public float reloadTime = 1.3f;
 
     public GameObject graphics;
+
+    public bool isProjectile = false;
+
+    public float projectileSpeed = 0f;
 
     public PlayerWeapon()
     {

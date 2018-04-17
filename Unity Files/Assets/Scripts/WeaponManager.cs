@@ -6,23 +6,56 @@ using UnityEngine.Networking;
 public class WeaponManager : NetworkBehaviour {
 
     [SerializeField]
+    private WeaponSwitching weaponSwitching;
+
+    [SerializeField]
     private string weaponLayerName = "Weapon";
 
     [SerializeField]
     private Transform weaponHolder;
 
     [SerializeField]
+    private PlayerWeapon[] weaponList;
+
     private PlayerWeapon primaryWeapon;
 
+    [SerializeField]
     private PlayerWeapon currWeapon;
 
+    private int currIdx = 0;
+
     private WeaponGraphics currGraphics;
+
+    [SerializeField]
+    private List<GameObject> weaponObject;
 
     public bool isReloading = false;
 
     private void Start()
     {
-        equipWeapon(primaryWeapon);
+        for (int i = 0; i < weaponList.Length; i++)
+        {
+            CreateWeapon(weaponList[i]);
+            weaponList[i].graphics.SetActive(false);
+        }
+        primaryWeapon = weaponList[0];
+        EquipWeapon(primaryWeapon, 0);
+    }
+
+    void Update()
+    {
+        if(currIdx != weaponSwitching.selectedWeapon)
+        {
+            int index = weaponSwitching.selectedWeapon;
+            EquipWeapon(weaponList[index], index);
+            currIdx = index;
+        }
+    }
+
+    public void EquipWeapon(PlayerWeapon _curr, int index)
+    {
+        currWeapon = _curr;
+        currGraphics = weaponObject[index].GetComponent<WeaponGraphics>();
     }
 
     public PlayerWeapon GetCurrWeapon()
@@ -35,11 +68,9 @@ public class WeaponManager : NetworkBehaviour {
         return currGraphics;
     }
 
-    void equipWeapon(PlayerWeapon _weapon)
+    void CreateWeapon(PlayerWeapon _weapon)
     {
-        currWeapon = _weapon;
-        GameObject _weaponIns = (GameObject)Instantiate(_weapon.graphics,weaponHolder.position,Quaternion.Euler(0,0,0));
-        _weaponIns.transform.SetParent(weaponHolder);
+        GameObject _weaponIns = (GameObject)Instantiate(_weapon.graphics, weaponHolder.position, Quaternion.Euler(0, 0, 0), weaponHolder);
         _weaponIns.transform.localPosition = Vector3.zero;
         _weaponIns.transform.localRotation = Quaternion.Euler(0, 0, 0);
         currGraphics = _weaponIns.GetComponent<WeaponGraphics>();
@@ -51,6 +82,7 @@ public class WeaponManager : NetworkBehaviour {
 
         if (isLocalPlayer)
             Util.SetLayerRecursively(_weaponIns, LayerMask.NameToLayer(weaponLayerName));
+        weaponObject.Add(_weaponIns);
     }
 
     public void Reload()

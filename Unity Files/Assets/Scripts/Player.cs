@@ -36,15 +36,15 @@ public class Player : NetworkBehaviour{
     private WeaponManager weaponManager;
     private PlayerWeapon currWeapon;
 
-    /* private void Update()
+    private void Update()
      {
          if (!isLocalPlayer)
              return;
          if (Input.GetKeyDown(KeyCode.K))
          {
-             RpcTakeDamage(9999);
+             RpcTakeDamage(50,null);
          }
-     }*/
+     }
 
     private void Start()
     {
@@ -129,7 +129,7 @@ public class Player : NetworkBehaviour{
         Collider _col = GetComponent<Collider>();
 
         if (_col != null)
-            _col.enabled = true;
+            _col.enabled = false;
 
         GameObject _gfxIns = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(_gfxIns, 3f);
@@ -183,5 +183,27 @@ public class Player : NetworkBehaviour{
         GameObject _gfxIns = (GameObject)Instantiate(spawnEffect, transform.position, Quaternion.identity);
         Destroy(_gfxIns, 3f);
 
+    }
+
+    [ClientRpc]
+    public void RpcTakeHealthPack(int _amount)
+    {
+        if(currHealth + _amount > maxHealth)
+        {
+            currHealth = maxHealth;
+        }else
+        {
+            currHealth += _amount;
+        }
+
+    }
+
+    public int GetCurrHealth()
+    {
+        return currHealth;
+    }
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 }
