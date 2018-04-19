@@ -22,6 +22,7 @@ public class WeaponManager : NetworkBehaviour {
     [SerializeField]
     private PlayerWeapon currWeapon;
 
+    [SyncVar]
     private int currIdx = 0;
 
     private WeaponGraphics currGraphics;
@@ -29,33 +30,81 @@ public class WeaponManager : NetworkBehaviour {
     [SerializeField]
     private List<GameObject> weaponObject;
 
+    private GameObject currWeaponObj;
+
+    private Player player;
+
     public bool isReloading = false;
 
     private void Start()
-    {
+    {        
+        player = GetComponent<Player>();
         for (int i = 0; i < weaponList.Length; i++)
         {
             CreateWeapon(weaponList[i]);
             weaponList[i].graphics.SetActive(false);
         }
         primaryWeapon = weaponList[0];
-        EquipWeapon(primaryWeapon, 0);
+        currWeapon = primaryWeapon;
+        CmdEquipWeapon(primaryWeapon, 0);
+        foreach (PlayerWeapon weapon in weaponList)
+        {
+            weapon.currBullets = weapon.maxBullets;
+        }        
+        
     }
 
     void Update()
     {
-        if(currIdx != weaponSwitching.selectedWeapon)
+        if(currWeaponObj)
+            currWeaponObj.SetActive(true);
+
+        if (isLocalPlayer)
         {
-            int index = weaponSwitching.selectedWeapon;
-            EquipWeapon(weaponList[index], index);
-            currIdx = index;
+            if (currIdx != weaponSwitching.selectedWeapon)
+            {
+                int index = weaponSwitching.selectedWeapon;
+                CmdEquipWeapon(weaponList[index], index);
+                currIdx = index;
+            }
+            if (player.isDead)
+            {
+                foreach (PlayerWeapon weapon in weaponList)
+                {
+                    weapon.currBullets = weapon.maxBullets;
+                }
+            }
         }
     }
 
-    public void EquipWeapon(PlayerWeapon _curr, int index)
+    public void SelectWeapon(int index)
+    {
+        int i = 0;
+        foreach (Transform weapon in weaponHolder)
+        {
+            if (i == index)
+            {
+                weapon.gameObject.SetActive(true);
+                currWeaponObj = weapon.gameObject;
+            }
+            else
+                weapon.gameObject.SetActive(false);
+            i++;
+        }
+    }
+
+    [ClientRpc]
+    void RpcEquipWeapon(PlayerWeapon _curr, int index)
     {
         currWeapon = _curr;
         currGraphics = weaponObject[index].GetComponent<WeaponGraphics>();
+        SelectWeapon(index);
+    }
+
+    [Command]
+    void CmdEquipWeapon(PlayerWeapon _curr, int index)
+    {
+        RpcEquipWeapon(_curr, index);
     }
 
     public PlayerWeapon GetCurrWeapon()

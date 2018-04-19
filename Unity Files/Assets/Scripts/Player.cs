@@ -7,6 +7,7 @@ public class Player : NetworkBehaviour{
 
     [SyncVar]
     private bool _isDead;
+
     public bool isDead
     {
         get { return _isDead; }
@@ -177,8 +178,6 @@ public class Player : NetworkBehaviour{
 
         if (_col != null)
             _col.enabled = true;
-
-        
 
         GameObject _gfxIns = (GameObject)Instantiate(spawnEffect, transform.position, Quaternion.identity);
         Destroy(_gfxIns, 3f);

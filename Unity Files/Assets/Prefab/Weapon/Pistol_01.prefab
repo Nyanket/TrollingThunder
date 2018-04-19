@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4054100971495624}
   - component: {fileID: 114661028631945612}
+  - component: {fileID: 114177947575477976}
   m_Layer: 0
   m_Name: Pistol_01
   m_TagString: Untagged
@@ -736,6 +737,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200624634813402}
   m_Mesh: {fileID: 4300014, guid: cc34ae6a7e465584aa9e4dcc48852048, type: 3}
+--- !u!114 &114177947575477976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374600452982646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 87
+    i1: 191
+    i2: 80
+    i3: 113
+    i4: 224
+    i5: 161
+    i6: 200
+    i7: 148
+    i8: 123
+    i9: 137
+    i10: 24
+    i11: 168
+    i12: 249
+    i13: 97
+    i14: 132
+    i15: 166
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114661028631945612
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,6 +18,8 @@ public class HealthPack : NetworkBehaviour {
     private int addedHealth = 100;
 
     [SyncVar]
+    private bool isTaken = false;
+    [SyncVar]
     private float currCD;
     [SyncVar]
     private float nextReadyTime;
@@ -32,6 +34,12 @@ public class HealthPack : NetworkBehaviour {
 	void Update () {
         float rotationSpeed = 20;
         healthPack.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+
+        if (isTaken)
+        {
+            TakeHealthPack();
+            isTaken = false;
+        }
 
         bool packReady = (Time.time > nextReadyTime);
         if (packReady)
@@ -55,7 +63,7 @@ public class HealthPack : NetworkBehaviour {
             Debug.Log(col.transform.name + " health full");
             return;
         }
-        TakeHealthPack();
+        isTaken = true;
         CmdTakeHealthPack();
         CmdAddHealth(col.transform.name);       
     }
@@ -99,6 +107,18 @@ public class HealthPack : NetworkBehaviour {
     }
 
     [Command]
+    void CmdTakeHealthPack()
+    {
+        RpcTakeHealthPack();
+    }
+
+    [ClientRpc]
+    void RpcTakeHealthPack()
+    {
+        TakeHealthPack();
+    }
+
+    [Command]
     void CmdAddHealth(string _playerID)
     {
         Debug.Log(_playerID + " take health pack");
@@ -116,18 +136,6 @@ public class HealthPack : NetworkBehaviour {
     private void CmdCooldown()
     {
         RpcDoCooldown();
-    }
-
-    [ClientRpc]
-    private void RpcDoTakeHealthPack()
-    {
-        TakeHealthPack();        
-    }
-
-    [Command]
-    private void CmdTakeHealthPack()
-    {
-        RpcDoTakeHealthPack();        
     }
 
     

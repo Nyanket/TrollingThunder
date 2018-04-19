@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 23318071453190276}
   - component: {fileID: 114192716377657892}
   - component: {fileID: 95449165498902816}
+  - component: {fileID: 114510813399173202}
   m_Layer: 0
   m_Name: Sci-Fi Automatic
   m_TagString: Untagged
@@ -208,6 +209,38 @@ MonoBehaviour:
   muzzleFlash: {fileID: 198290036546329408}
   hitEffectPrefab: {fileID: 1664624970964650, guid: 6a092f0f705de494ea2bc36ff2989c8c,
     type: 2}
+--- !u!114 &114510813399173202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613832788845030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 6
+    i1: 72
+    i2: 145
+    i3: 238
+    i4: 118
+    i5: 79
+    i6: 119
+    i7: 196
+    i8: 218
+    i9: 138
+    i10: 138
+    i11: 208
+    i12: 196
+    i13: 130
+    i14: 121
+    i15: 118
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!198 &198220614137928862
 ParticleSystem:
   m_ObjectHideFlags: 1
