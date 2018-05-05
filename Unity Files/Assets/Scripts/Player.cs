@@ -143,8 +143,8 @@ public class Player : NetworkBehaviour{
         }
 
         StartCoroutine(Respawn());
-        currWeapon = weaponManager.GetCurrWeapon();
-        currWeapon.currBullets = currWeapon.maxBullets;
+        //currWeapon = weaponManager.GetCurrWeapon();
+        //currWeapon.currBullets = currWeapon.maxBullets;
     }
 
     private IEnumerator Respawn()

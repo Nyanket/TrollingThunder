@@ -30,6 +30,9 @@ public class WeaponManager : NetworkBehaviour {
     [SerializeField]
     private List<GameObject> weaponObject;
 
+    [SerializeField]
+    private List<int> weaponBullets;
+
     private GameObject currWeaponObj;
 
     private Player player;
@@ -50,6 +53,7 @@ public class WeaponManager : NetworkBehaviour {
         foreach (PlayerWeapon weapon in weaponList)
         {
             weapon.currBullets = weapon.maxBullets;
+            weaponBullets.Add(weapon.currBullets);
         }        
         
     }
@@ -59,22 +63,25 @@ public class WeaponManager : NetworkBehaviour {
         if(currWeaponObj)
             currWeaponObj.SetActive(true);
 
+
+
         if (isLocalPlayer)
         {
             if (currIdx != weaponSwitching.selectedWeapon)
             {
                 int index = weaponSwitching.selectedWeapon;
                 CmdEquipWeapon(weaponList[index], index);
+                weaponList[currIdx].currBullets = currWeapon.currBullets;
                 currIdx = index;
             }
-            if (player.isDead)
+            if (player.isDead == true)
             {
                 foreach (PlayerWeapon weapon in weaponList)
                 {
                     weapon.currBullets = weapon.maxBullets;
                 }
             }
-        }
+        }        
     }
 
     public void SelectWeapon(int index)
