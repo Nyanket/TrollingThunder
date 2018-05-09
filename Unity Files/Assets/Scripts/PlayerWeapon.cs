@@ -26,6 +26,8 @@ public class PlayerWeapon : ScriptableObject
 
     public float projectileSpeed = 0f;
 
+    public GameObject projectile;
+
     public PlayerWeapon()
     {
         currBullets = maxBullets;

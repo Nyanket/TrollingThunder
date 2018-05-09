@@ -31,7 +31,12 @@ public class WeaponManager : NetworkBehaviour {
     private List<GameObject> weaponObject;
 
     [SerializeField]
+    private GameObject weaponProjectile;
+
+    [SerializeField]
     private List<int> weaponBullets;
+
+    private Transform currFirePoint;
 
     private GameObject currWeaponObj;
 
@@ -62,17 +67,18 @@ public class WeaponManager : NetworkBehaviour {
     {
         if(currWeaponObj)
             currWeaponObj.SetActive(true);
-
-
-
+        
         if (isLocalPlayer)
         {
+            if (currWeapon.projectile)
+                weaponProjectile = currWeapon.projectile;
             if (currIdx != weaponSwitching.selectedWeapon)
             {
+                StopCoroutine(Reload_Coroutine());
                 int index = weaponSwitching.selectedWeapon;
                 CmdEquipWeapon(weaponList[index], index);
                 weaponList[currIdx].currBullets = currWeapon.currBullets;
-                currIdx = index;
+                currIdx = index;                
             }
             if (player.isDead == true)
             {
@@ -106,6 +112,7 @@ public class WeaponManager : NetworkBehaviour {
         currWeapon = _curr;
         currGraphics = weaponObject[index].GetComponent<WeaponGraphics>();
         SelectWeapon(index);
+        currFirePoint = weaponObject[index].transform.Find("FirePoint");
     }
 
     [Command]
@@ -122,6 +129,16 @@ public class WeaponManager : NetworkBehaviour {
     public WeaponGraphics GetCurrGraphics()
     {
         return currGraphics;
+    }
+
+    public Transform GetCurrFirePoint()
+    {
+        return currFirePoint;
+    }
+
+    public GameObject GetCurrProjectile()
+    {
+        return weaponProjectile;
     }
 
     void CreateWeapon(PlayerWeapon _weapon)

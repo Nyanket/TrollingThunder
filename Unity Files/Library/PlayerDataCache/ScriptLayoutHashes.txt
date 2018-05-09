@@ -146,7 +146,7 @@ a90e94673f50d2237c1b971c138660c6 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 e2580dc21bf17dc42663b50853ed422f Assembly-CSharp.dll:.KillFeed
-d4fe95f82a1563239142eab9242de85d Assembly-CSharp.dll:.WeaponManager
+7362ac12dfcb3c6492a817b84e539995 Assembly-CSharp.dll:.WeaponManager
 be1f173d56b135ab84bd519ff7635313 Assembly-CSharp.dll:.WeaponSwitching
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.MobileControlRig
 b2a87f8a9694d632eae6fb2e8224d9ee Assembly-CSharp.dll:.UserAccountManager
@@ -185,7 +185,7 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 d2af69ce28cda6fcf0b7728ae3f251b4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DynamicShadowSettings
 602017ac837ce39de79e6b98478ee720 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleActivatorMenu
 7ebdc70bc0f6bdf5d5088dfa00250254 Assembly-CSharp.dll:.RoomListItem
-c2f8c66ca9fb336e089963b8f694c05a Assembly-CSharp.dll:.PlayerWeapon
+8df27861653ccde6405842dcd74606e2 Assembly-CSharp.dll:.PlayerWeapon
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -203,8 +203,9 @@ f4b175ffc1eeca85d2783436b4c764a7 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 650c1e412dac0323d37ae3023565f947 Assembly-CSharp.dll:.KillFeedItem
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FPSCounter
 d742aff7dae4846ea47fa40b5b944651 Assembly-CSharp.dll:.PlayerSetup
-3e3b511df48309bfb0c70837599cfc15 Assembly-CSharp.dll:.PlayerShoot
+2ff70933b895538a28b1b2d8bda30f29 Assembly-CSharp.dll:.PlayerShoot
 8a6b1935afb74a080c7a80e175c3b7f2 Assembly-CSharp.dll:.PlayerStats
 78d1af96a2c54e318d4e22ced5f6d739 Assembly-CSharp.dll:.PlayerController
 f0da81376c3ac18bc573050067e3a113 Assembly-CSharp.dll:.GameManager
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+511cc5018188627dec885cde6c103b60 Assembly-CSharp.dll:.ProjectileBullets

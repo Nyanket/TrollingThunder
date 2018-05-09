@@ -18,6 +18,8 @@ public class PlayerShoot : NetworkBehaviour {
 
     private WeaponManager weaponManager;
 
+    public GameObject tes;
+
 
     void Start()
     {
@@ -31,10 +33,10 @@ public class PlayerShoot : NetworkBehaviour {
 
     }
 
-    void Update()
-    {
-
+    void Update()    {
+        
         currWeapon = weaponManager.GetCurrWeapon();
+        tes = weaponManager.GetCurrProjectile();
 
         if (PauseMenu.isOn)
             return;
@@ -72,7 +74,7 @@ public class PlayerShoot : NetworkBehaviour {
     }
 
     [Command]
-    void CmdOnHit(Vector3 _pos, Vector3 _normal)
+    public void CmdOnHit(Vector3 _pos, Vector3 _normal)
     {
         RpcDoHitEffect(_pos, _normal);
     }
@@ -107,16 +109,26 @@ public class PlayerShoot : NetworkBehaviour {
         currWeapon.currBullets--;
 
         CmdOnShoot();
-
+                    
         RaycastHit _hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out _hit, currWeapon.range, mask))
         {
-            if (_hit.collider.tag == PLAYER_TAG)
+            if (!currWeapon.isProjectile)
             {
-                CmdPlayerShot(_hit.collider.name, currWeapon.damage, transform.name);
+                if (_hit.collider.tag == PLAYER_TAG)
+                {
+                    CmdPlayerShot(_hit.collider.name, currWeapon.damage, transform.name);
+                }
+                CmdOnHit(_hit.point, _hit.normal);
             }
-            CmdOnHit(_hit.point, _hit.normal);
+            else
+            {                
+                CmdSpawnBullet(_hit.point);
+            }
+            
         }
+        
+
         if (currWeapon.currBullets <= 0)
             weaponManager.Reload();
     }
@@ -128,6 +140,32 @@ public class PlayerShoot : NetworkBehaviour {
 
         Player _player = GameManager.GetPlayer(_playerID);
         _player.RpcTakeDamage(_damage, _sourceID);
+    }
+
+    [ClientRpc]
+    void RpcSpawnBullet(Vector3 hit)
+    {
+        GameObject _bullet = (GameObject)Instantiate(weaponManager.GetCurrProjectile(), weaponManager.GetCurrFirePoint().position, weaponManager.GetCurrFirePoint().rotation);
+        _bullet.layer = LayerMask.NameToLayer("Bullets");
+        _bullet.GetComponent<ProjectileBullets>().sourceID = transform.name;
+        _bullet.GetComponent<ProjectileBullets>().shoot = GetComponent<PlayerShoot>();
+        _bullet.GetComponent<Rigidbody>().MovePosition(hit);
+        //_bullet.GetComponent<Rigidbody>().AddForce(_bullet.transform.position * currWeapon.projectileSpeed);
+        //Vector3 direction = (hit - _bullet.transform.position).normalized;
+        //Vector3 move = direction * 1 * Time.deltaTime;
+        //_bullet.GetComponent<Rigidbody>().MovePosition(move);
+        //_bullet.transform.LookAt(hit);
+        //_bullet.GetComponent<Rigidbody>().AddRelativeForce(_bullet.transform.forward * 500);
+        //_bullet.transform.Translate((hit - _bullet.transform.position) * Time.deltaTime * 10f);
+        //_bullet.transform.position = Vector3.MoveTowards(_bullet.transform.position, hit, 10f * Time.deltaTime);
+        //_bullet.transform.position = Vector3.LerpUnclamped(_bullet.transform.position, hit, 10f * Time.deltaTime);
+
+    }
+
+    [Command]
+    void CmdSpawnBullet(Vector3 hit)
+    {
+        RpcSpawnBullet(hit);
     }
 
 }

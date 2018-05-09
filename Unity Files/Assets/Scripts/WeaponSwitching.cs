@@ -13,6 +13,11 @@ public class WeaponSwitching : MonoBehaviour {
 	
 	void Update () {
 
+        if (PauseMenu.isOn)
+        {            
+            return;
+        }
+
         int previousSelectedWeapon = selectedWeapon;
 
 		if(Input.GetAxis("Mouse ScrollWheel") > 0f)

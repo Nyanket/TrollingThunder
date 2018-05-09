@@ -37,7 +37,7 @@ public class Player : NetworkBehaviour{
     private WeaponManager weaponManager;
     private PlayerWeapon currWeapon;
 
-    private void Update()
+    /*private void Update()
      {
          if (!isLocalPlayer)
              return;
@@ -45,7 +45,7 @@ public class Player : NetworkBehaviour{
          {
              RpcTakeDamage(50,null);
          }
-     }
+     }*/
 
     private void Start()
     {
@@ -142,9 +142,7 @@ public class Player : NetworkBehaviour{
             GetComponent<PlayerSetup>().playerUIInstance.SetActive(false);
         }
 
-        StartCoroutine(Respawn());
-        //currWeapon = weaponManager.GetCurrWeapon();
-        //currWeapon.currBullets = currWeapon.maxBullets;
+        StartCoroutine(Respawn());        
     }
 
     private IEnumerator Respawn()
