@@ -74,7 +74,8 @@ public class WeaponManager : NetworkBehaviour {
                 weaponProjectile = currWeapon.projectile;
             if (currIdx != weaponSwitching.selectedWeapon)
             {
-                StopCoroutine(Reload_Coroutine());
+                StopCoroutine("Reload_Coroutine");
+                isReloading = false;
                 int index = weaponSwitching.selectedWeapon;
                 CmdEquipWeapon(weaponList[index], index);
                 weaponList[currIdx].currBullets = currWeapon.currBullets;
@@ -162,7 +163,7 @@ public class WeaponManager : NetworkBehaviour {
     {
         if (isReloading)
             return;
-        StartCoroutine(Reload_Coroutine());
+        StartCoroutine("Reload_Coroutine");
         
     }
 

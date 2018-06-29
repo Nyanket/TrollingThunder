@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Name: Sci-Fi Automatic
   m_EditorClassIdentifier: 
   weaponName: Sci-Fi Automatic
-  damage: 10
+  damage: 8
   range: 100
-  fireRate: 20
-  maxBullets: 40
-  currBullets: 40
+  fireRate: 16
+  maxBullets: 30
+  currBullets: 30
   reloadTime: 1.3
   graphics: {fileID: 1294672646082164, guid: 8d43e76b346f2f8448846e9211629d15, type: 2}
-  isProjectile: 1
+  isProjectile: 0
   projectileSpeed: 10
   projectile: {fileID: 1998307661207474, guid: dfac9944d45c90b4185556726049135b, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   weaponName: Pistol
   damage: 20
   range: 100
-  fireRate: 0
+  fireRate: 0.4
   maxBullets: 7
   currBullets: 7
   reloadTime: 1.3

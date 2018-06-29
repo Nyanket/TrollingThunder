@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour {
 
 	}
 	
+    public void SetSensitivity(string _sens)
+    {
+        //sensitivity = (float)int.Parse(_sens);
+    }
+
 	void Update () {
 
         if (PauseMenu.isOn)
