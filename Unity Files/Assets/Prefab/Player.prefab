@@ -1031,8 +1031,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5b18ef6e92423204fbe7a55fcde5d716, type: 2}
   currWeapon: {fileID: 0}
   weaponObject: []
-  weaponProjectile: {fileID: 0}
-  weaponBullets: 
   isReloading: 0
 --- !u!114 &114511845749302124
 MonoBehaviour:
@@ -1147,7 +1145,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 4294939391
-  tes: {fileID: 0}
 --- !u!114 &114961845471214498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1378,8 +1375,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.0408993}
-  m_SizeDelta: {x: 100, y: 32.458}
+  m_AnchoredPosition: {x: -0.0010687, y: 2.0408993}
+  m_SizeDelta: {x: 130.02, y: 32.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224839652120507522
 RectTransform:

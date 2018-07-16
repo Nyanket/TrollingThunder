@@ -30,11 +30,11 @@ public class WeaponManager : NetworkBehaviour {
     [SerializeField]
     private List<GameObject> weaponObject;
 
-    [SerializeField]
-    private GameObject weaponProjectile;
+    //[SerializeField]
+    //private GameObject weaponProjectile;
 
-    [SerializeField]
-    private List<int> weaponBullets;
+    //[SerializeField]
+    //private List<int> weaponBullets;
 
     private Transform currFirePoint;
 
@@ -58,7 +58,7 @@ public class WeaponManager : NetworkBehaviour {
         foreach (PlayerWeapon weapon in weaponList)
         {
             weapon.currBullets = weapon.maxBullets;
-            weaponBullets.Add(weapon.currBullets);
+            //weaponBullets.Add(weapon.currBullets);
         }        
         
     }
@@ -70,8 +70,8 @@ public class WeaponManager : NetworkBehaviour {
         
         if (isLocalPlayer)
         {
-            if (currWeapon.projectile)
-                weaponProjectile = currWeapon.projectile;
+            //if (currWeapon.projectile)
+                //weaponProjectile = currWeapon.projectile;
             if (currIdx != weaponSwitching.selectedWeapon)
             {
                 StopCoroutine("Reload_Coroutine");
@@ -137,10 +137,10 @@ public class WeaponManager : NetworkBehaviour {
         return currFirePoint;
     }
 
-    public GameObject GetCurrProjectile()
+    /*public GameObject GetCurrProjectile()
     {
         return weaponProjectile;
-    }
+    }*/
 
     void CreateWeapon(PlayerWeapon _weapon)
     {

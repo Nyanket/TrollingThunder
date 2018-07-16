@@ -6,11 +6,6 @@ public class WeaponSwitching : MonoBehaviour {
    
     public int selectedWeapon = 0;
     
-	/*void Start () {
-        //SelectWeapon();
-	}*/
-	
-	
 	void Update () {
 
         if (PauseMenu.isOn)
@@ -41,12 +36,7 @@ public class WeaponSwitching : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha1))
             selectedWeapon = 0;
         if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2)
-            selectedWeapon = 1;
-
-        /*if (previousSelectedWeapon != selectedWeapon)
-        {
-            SelectWeapon();
-        }*/
+            selectedWeapon = 1;        
 
     }
 

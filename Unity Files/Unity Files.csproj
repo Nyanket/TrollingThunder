@@ -297,8 +297,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Arena\Example\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
     <Compile Include="Assets\Database Control Free\Demos\C#\Scripts\DCF_DemoScene_ManagerScript_CSharp.cs" />
+    <Compile Include="Assets\Scripts\BGSound.cs" />
     <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
     <Compile Include="Assets\Scripts\DataTranslator.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -332,7 +332,6 @@
     <Compile Include="Assets\Scripts\WeaponSwitching.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Arena\Example\ImageEffects\Shaders\SSAOShader.shader" />
     <None Include="Assets\Database Control Free\Demos\UnityScript\Readme.txt" />
     <None Include="Assets\Database Control Free\Resources\DCF_RuntimeData.txt" />
     <None Include="Assets\Editor Default Resources\Database Control Free\DCF_EditorData.txt" />

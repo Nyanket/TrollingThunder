@@ -18,7 +18,7 @@ public class PlayerShoot : NetworkBehaviour {
 
     private WeaponManager weaponManager;
 
-    public GameObject tes;
+    //public GameObject tes;
 
 
     void Start()
@@ -83,6 +83,7 @@ public class PlayerShoot : NetworkBehaviour {
     void RpcDoShootEffect()
     {
         weaponManager.GetCurrGraphics().muzzleFlash.Play();
+        weaponManager.GetCurrGraphics().GetComponent<AudioSource>().Play();
     }
 
     [ClientRpc]
@@ -113,19 +114,11 @@ public class PlayerShoot : NetworkBehaviour {
         RaycastHit _hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out _hit, currWeapon.range, mask))
         {
-            //if (!currWeapon.isProjectile)
-            //{
-                if (_hit.collider.tag == PLAYER_TAG)
-                {
-                    CmdPlayerShot(_hit.collider.name, currWeapon.damage, transform.name);
-                }
-                CmdOnHit(_hit.point, _hit.normal);
-            //}
-            //else
-            //{                
-                //CmdSpawnBullet(_hit.point);
-            //}
-            
+            if (_hit.collider.tag == PLAYER_TAG)
+            {
+                CmdPlayerShot(_hit.collider.name, currWeapon.damage, transform.name);
+            }
+            CmdOnHit(_hit.point, _hit.normal);                 
         }
         
 
@@ -142,30 +135,30 @@ public class PlayerShoot : NetworkBehaviour {
         _player.RpcTakeDamage(_damage, _sourceID);
     }
 
-   /* [ClientRpc]
-    void RpcSpawnBullet(Vector3 hit)
-    {
-        GameObject _bullet = (GameObject)Instantiate(weaponManager.GetCurrProjectile(), weaponManager.GetCurrFirePoint().position, weaponManager.GetCurrFirePoint().rotation);
-        _bullet.layer = LayerMask.NameToLayer("Bullets");
-        _bullet.GetComponent<ProjectileBullets>().sourceID = transform.name;
-        _bullet.GetComponent<ProjectileBullets>().shoot = GetComponent<PlayerShoot>();
-        _bullet.GetComponent<Rigidbody>().MovePosition(hit);
-        //_bullet.GetComponent<Rigidbody>().AddForce(_bullet.transform.position * currWeapon.projectileSpeed);
-        //Vector3 direction = (hit - _bullet.transform.position).normalized;
-        //Vector3 move = direction * 1 * Time.deltaTime;
-        //_bullet.GetComponent<Rigidbody>().MovePosition(move);
-        //_bullet.transform.LookAt(hit);
-        //_bullet.GetComponent<Rigidbody>().AddRelativeForce(_bullet.transform.forward * 500);
-        //_bullet.transform.Translate((hit - _bullet.transform.position) * Time.deltaTime * 10f);
-        //_bullet.transform.position = Vector3.MoveTowards(_bullet.transform.position, hit, 10f * Time.deltaTime);
-        //_bullet.transform.position = Vector3.LerpUnclamped(_bullet.transform.position, hit, 10f * Time.deltaTime);
+    /* [ClientRpc]
+     void RpcSpawnBullet(Vector3 hit)
+     {
+         GameObject _bullet = (GameObject)Instantiate(weaponManager.GetCurrProjectile(), weaponManager.GetCurrFirePoint().position, weaponManager.GetCurrFirePoint().rotation);
+         _bullet.layer = LayerMask.NameToLayer("Bullets");
+         _bullet.GetComponent<ProjectileBullets>().sourceID = transform.name;
+         _bullet.GetComponent<ProjectileBullets>().shoot = GetComponent<PlayerShoot>();
+         _bullet.GetComponent<Rigidbody>().MovePosition(hit);
+         _bullet.GetComponent<Rigidbody>().AddForce(_bullet.transform.position * currWeapon.projectileSpeed);
+         Vector3 direction = (hit - _bullet.transform.position).normalized;
+         Vector3 move = direction * 1 * Time.deltaTime;
+         _bullet.GetComponent<Rigidbody>().MovePosition(move);
+         _bullet.transform.LookAt(hit);
+         _bullet.GetComponent<Rigidbody>().AddRelativeForce(_bullet.transform.forward * 500);
+         _bullet.transform.Translate((hit - _bullet.transform.position) * Time.deltaTime * 10f);
+         _bullet.transform.position = Vector3.MoveTowards(_bullet.transform.position, hit, 10f * Time.deltaTime);
+         _bullet.transform.position = Vector3.LerpUnclamped(_bullet.transform.position, hit, 10f * Time.deltaTime);
 
-    }*/
+     }
 
-    //[Command]
-    //void CmdSpawnBullet(Vector3 hit)
-    //{
-    //    RpcSpawnBullet(hit);
-    //}
+     [Command]
+     void CmdSpawnBullet(Vector3 hit)
+     {
+         RpcSpawnBullet(hit);
+     }*/
 
 }

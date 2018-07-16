@@ -15,7 +15,7 @@ public class PlayerMotor : MonoBehaviour {
     private float currCamRotateX = 0f;
     private Vector3 thrusterForce = Vector3.zero;
 
-    [SerializeField] private float cameraRotationLimit = 80f;
+    [SerializeField] private float cameraRotationLimit = 85f;
 
     [SerializeField] private Transform head;
 

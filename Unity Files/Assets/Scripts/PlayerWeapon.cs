@@ -22,11 +22,13 @@ public class PlayerWeapon : ScriptableObject
 
     public GameObject graphics;
 
-    public bool isProjectile = false;
+    //public AudioClip shot;
 
-    public float projectileSpeed = 0f;
+    //public bool isProjectile = false;
 
-    public GameObject projectile;
+    //public float projectileSpeed = 0f;
+
+    //public GameObject projectile;
 
     public PlayerWeapon()
     {
